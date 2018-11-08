@@ -1,7 +1,10 @@
-const letterCounts = {};
-const wordCounts = {};
+let letterCounts = {};
+let wordCounts = {};
 
 document.getElementById("countButton").onclick = function() {
+    letterCounts = {};
+    wordCounts = {};
+    // reset counts when button is clicked
     var typedText = document.getElementById("textInput").value;
     typedText = typedText.toLowerCase();
     // This changes all the letter to lower case.
@@ -12,6 +15,7 @@ document.getElementById("countButton").onclick = function() {
     countLetters(typedText)
     countWords(typedText)
     appendCounts()
+    console.log(sortObj(letterCounts))
 }
 
 // count letters in text area
@@ -41,6 +45,9 @@ function countWords(input) {
 
 // append counts to divs
 function appendCounts() {
+    document.getElementById('lettersDiv').innerHTML = ''
+    document.getElementById('wordsDiv').innerHTML = ''
+    // clear page before adding new counts
     for (let letter in letterCounts) {
         const span = document.createElement("span");
         const textContent = document.createTextNode('"' + letter + "\": " + letterCounts[letter] + ", ");
@@ -53,4 +60,20 @@ function appendCounts() {
         span.appendChild(textContent);
         document.getElementById("wordsDiv").appendChild(span);
     }
+}
+
+function sortObj(object) {
+    let sortable = []
+    let sort_obj = {}
+    for (var x in object) {
+        sortable.push([x, object[x]]);
+    }
+    sortable.sort(function(a,b) {
+        return a[1] - b[1]
+    })
+    
+    for(let i in sortable) {
+        sort_obj[i[0]] = sort_obj[i[1]]
+    }
+    return sort_obj
 }

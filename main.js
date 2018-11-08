@@ -15,6 +15,7 @@ document.getElementById("countButton").onclick = function() {
     countLetters(typedText)
     countWords(typedText)
     appendCounts()
+    console.log(letterCounts.sort(compare))
 }
 
 // count letters in text area
@@ -56,8 +57,9 @@ function appendCounts() {
         const div = document.createElement("div")
         div.class = "bar"
         div.style.height = "10px"
-        div.style.width = letterCounts[letter]*20 + "px"
+        div.style.width = letterCounts[letter]*10 + "px"
         div.style.backgroundColor = "gray"
+        div.style.marginBottom = "1px"
 
         span.appendChild(textContent);
         document.getElementById("lettersDiv").appendChild(span);
@@ -70,8 +72,9 @@ function appendCounts() {
         const div = document.createElement("div")
         div.class = "bar"
         div.style.height = "10px"
-        div.style.width = wordCounts[word]*20 + "px"
+        div.style.width = wordCounts[word]*50 + "px"
         div.style.backgroundColor = "gray"
+        div.style.marginBottom = "1px"
 
         span.appendChild(textContent);
         document.getElementById("wordsDiv").appendChild(span);
@@ -79,18 +82,9 @@ function appendCounts() {
     }
 }
 
-// function sortObj(object) {
-//     let sortable = []
-//     let sort_obj = {}
-//     for (var x in object) {
-//         sortable.push([x, object[x]]);
-//     }
-//     sortable.sort(function(a,b) {
-//         return a[1] - b[1]
-//     })
-    
-//     for(let i in sortable) {
-//         sort_obj[i[0]] = sort_obj[i[1]]
-//     }
-//     return sort_obj
-// }
+
+function compare(a,b) {
+    if (a.value < b.value) return -1;
+    if (a.value < b.value) return 1;
+    return 0;
+}

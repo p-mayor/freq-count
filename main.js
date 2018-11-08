@@ -15,7 +15,6 @@ document.getElementById("countButton").onclick = function() {
     countLetters(typedText)
     countWords(typedText)
     appendCounts()
-    console.log(sortObj(letterCounts))
 }
 
 // count letters in text area
@@ -43,22 +42,40 @@ function countWords(input) {
     }
 }
 
-// append counts to divs
+// append data to page
 function appendCounts() {
     document.getElementById('lettersDiv').innerHTML = ''
+    document.getElementById('lettersGraph').innerHTML = ''
     document.getElementById('wordsDiv').innerHTML = ''
+    document.getElementById('wordsGraph').innerHTML = ''
     // clear page before adding new counts
     for (let letter in letterCounts) {
         const span = document.createElement("span");
         const textContent = document.createTextNode('"' + letter + "\": " + letterCounts[letter] + ", ");
+
+        const div = document.createElement("div")
+        div.class = "bar"
+        div.style.height = "10px"
+        div.style.width = letterCounts[letter]*20 + "px"
+        div.style.backgroundColor = "gray"
+
         span.appendChild(textContent);
         document.getElementById("lettersDiv").appendChild(span);
+        document.getElementById("lettersGraph").appendChild(div);
     }
     for (let word in wordCounts) {
         const span = document.createElement("span");
         const textContent = document.createTextNode('"' + word + "\": " + wordCounts[word] + ", ");
+
+        const div = document.createElement("div")
+        div.class = "bar"
+        div.style.height = "10px"
+        div.style.width = wordCounts[word]*20 + "px"
+        div.style.backgroundColor = "gray"
+
         span.appendChild(textContent);
         document.getElementById("wordsDiv").appendChild(span);
+        document.getElementById("wordsGraph").appendChild(div);
     }
 }
 

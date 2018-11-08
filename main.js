@@ -5,7 +5,7 @@ document.getElementById("countButton").onclick = function() {
     letterCounts = {};
     wordCounts = {};
     // reset counts when button is clicked
-    var typedText = document.getElementById("textInput").value;
+    let typedText = document.getElementById("textInput").value;
     typedText = typedText.toLowerCase();
     // This changes all the letter to lower case.
     typedText = typedText.replace(/[^a-z'\s]+/g, "");

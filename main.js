@@ -44,39 +44,42 @@ function countWords(input) {
 
 // append data to page
 function appendCounts() {
+    // clear page before adding new counts
     document.getElementById('lettersDiv').innerHTML = ''
     document.getElementById('lettersGraph').innerHTML = ''
     document.getElementById('wordsDiv').innerHTML = ''
     document.getElementById('wordsGraph').innerHTML = ''
-    // clear page before adding new counts
     for (let letter in letterCounts) {
+        // append text
         const span = document.createElement("span");
         const textContent = document.createTextNode('"' + letter + "\": " + letterCounts[letter] + ", ");
-
+        span.appendChild(textContent);
+        document.getElementById("lettersDiv").appendChild(span);
+        
+        // append bars for histogram
         const div = document.createElement("div")
         div.class = "bar"
         div.style.height = "10px"
         div.style.width = letterCounts[letter]*10 + "px"
         div.style.backgroundColor = "gray"
         div.style.marginBottom = "1px"
-
-        span.appendChild(textContent);
-        document.getElementById("lettersDiv").appendChild(span);
         document.getElementById("lettersGraph").appendChild(div);
     }
     for (let word in wordCounts) {
+        // append text
         const span = document.createElement("span");
         const textContent = document.createTextNode('"' + word + "\": " + wordCounts[word] + ", ");
+        span.appendChild(textContent);
+        document.getElementById("wordsDiv").appendChild(span);
 
+        // append bars for histogram
         const div = document.createElement("div")
         div.class = "bar"
         div.style.height = "10px"
         div.style.width = wordCounts[word]*50 + "px"
         div.style.backgroundColor = "gray"
         div.style.marginBottom = "1px"
-
-        span.appendChild(textContent);
-        document.getElementById("wordsDiv").appendChild(span);
         document.getElementById("wordsGraph").appendChild(div);
+
     }
 }

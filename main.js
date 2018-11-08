@@ -15,7 +15,6 @@ document.getElementById("countButton").onclick = function() {
     countLetters(typedText)
     countWords(typedText)
     appendCounts()
-    console.log(letterCounts.sort(compare))
 }
 
 // count letters in text area

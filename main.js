@@ -62,18 +62,18 @@ function appendCounts() {
     }
 }
 
-function sortObj(object) {
-    let sortable = []
-    let sort_obj = {}
-    for (var x in object) {
-        sortable.push([x, object[x]]);
-    }
-    sortable.sort(function(a,b) {
-        return a[1] - b[1]
-    })
+// function sortObj(object) {
+//     let sortable = []
+//     let sort_obj = {}
+//     for (var x in object) {
+//         sortable.push([x, object[x]]);
+//     }
+//     sortable.sort(function(a,b) {
+//         return a[1] - b[1]
+//     })
     
-    for(let i in sortable) {
-        sort_obj[i[0]] = sort_obj[i[1]]
-    }
-    return sort_obj
-}
+//     for(let i in sortable) {
+//         sort_obj[i[0]] = sort_obj[i[1]]
+//     }
+//     return sort_obj
+// }
